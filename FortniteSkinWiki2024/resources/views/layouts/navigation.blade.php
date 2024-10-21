@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('FortniteSkinWikis.index')" :active="request()->routeIs('FortniteSkinWikis.index')">
+                        {{ __('View All FortniteSkins') }}
+                    </x-nav-link>
                 </div>
             </div>
 

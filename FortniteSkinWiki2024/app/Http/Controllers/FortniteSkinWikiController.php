@@ -12,7 +12,9 @@ class FortniteSkinWikiController extends Controller
      */
     public function index()
     {
-        //
+        $FortniteSkinWikis = FortniteSkinWiki::all(); //Fecth all fortnite skins
+        return view('FortniteSkinWikis.index', compact('FortniteSkinWikis'));
+
     }
 
     /**
@@ -34,15 +36,15 @@ class FortniteSkinWikiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(FortniteSkinWiki $fortniteSkinWiki)
+    public function show(FortniteSkinWiki $FortniteSkinWikis)
     {
-        //
+        return view('FortniteSkinWikis.show')->with('FortniteSkinWiki', $FortniteSkinWikis);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(FortniteSkinWiki $fortniteSkinWiki)
+    public function edit(FortniteSkinWiki $FortniteSkinWikis)
     {
         //
     }
@@ -50,7 +52,7 @@ class FortniteSkinWikiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, FortniteSkinWiki $fortniteSkinWiki)
+    public function update(Request $request, FortniteSkinWiki $FortniteSkinWikis)
     {
         //
     }
@@ -58,7 +60,7 @@ class FortniteSkinWikiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(FortniteSkinWiki $fortniteSkinWiki)
+    public function destroy(FortniteSkinWiki $FortniteSkinWikis)
     {
         //
     }
