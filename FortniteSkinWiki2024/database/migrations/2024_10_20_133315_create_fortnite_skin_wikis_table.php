@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('vbuck_price');
-            $table->integer('rarity');
-            $table->string('season');
+            $table->string('rarity');
+            $table->integer('season');
+            $table->string('image')->nullable();
         });
     }
 
