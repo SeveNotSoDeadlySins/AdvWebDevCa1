@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class FortniteSkinWiki extends Model
 {
     Use HasFactory;
+
+    protected $fillable = [
+        'Name',
+        'Rarity',
+        'image',
+        'Price',
+        'SeasonRelease'
+    ];
 }
