@@ -19,6 +19,7 @@
                             :SeasonRelease="$FortniteSkinWiki->season"
                             :image="$FortniteSkinWiki->image"
                         />
+                    </a>
                     @endforeach
                 </div>
             </div>

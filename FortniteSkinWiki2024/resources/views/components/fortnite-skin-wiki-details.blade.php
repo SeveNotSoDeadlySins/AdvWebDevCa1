@@ -2,7 +2,11 @@
 
 <div class="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300 max-w-xl mx-auto">
 
+<<<<<<< HEAD
     <h1 class="font-bold text-black-600 mb-2" style="font-size: 3rem;">{{ $Name }}</h1>
+=======
+<h1 class="font-bold text-black-600 mb-2" style="font-size: 3rem;">{{ $Name }}</h1>
+>>>>>>> 6a972a070901d41c9f61903a848b1c16c6c9b8b4
 
     <div class="overflow-hidden rounded-lg mb-4 flex justify-center"> 
         <img src="{{ asset('images/FortniteSkinWikis/' . $image) }}" alt="{{ $Name }}" class="w-full max-w-xs h-auto object-cover">
