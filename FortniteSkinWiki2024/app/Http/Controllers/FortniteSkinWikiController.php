@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\FortniteSkinWiki;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FortniteSkinWikiController extends Controller
 {
@@ -21,7 +22,7 @@ class FortniteSkinWikiController extends Controller
      */
     public function create()
     {
-        //
+        return view('FortniteSkinWikis.create');
     }
 
     /**
@@ -29,7 +30,28 @@ class FortniteSkinWikiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'Name' => 'required',
+            'Rarity' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'Price' => 'required|integer',
+            'SeasonRelease' => 'required|integer',
+        ]);
+
+        if($request->hasFile('image')) {
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images/FortniteSkinWikis') , $image);
+        }
+
+        FortniteSkinWiki::create([
+            'Name' => $request->Name,
+            'Rarity'=> $request->Rarity,
+            'image'=>$imageName,
+            'Price'=>$request->Price,
+            'SeasonRelease'=>$request->SeasonRelease
+        ]);
+
+        return to_route('FortniteSkinWikis.index')->with('success' , 'Fortnite Skin created!');
     }
 
     /**

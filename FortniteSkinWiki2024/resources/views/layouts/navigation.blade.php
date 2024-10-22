@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('FortniteSkinWikis.index')" :active="request()->routeIs('FortniteSkinWikis.index')">
                         {{ __('View All FortniteSkins') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('FortniteSkinWikis.create')" :active="request()->routeIs('FortniteSkinWikis.create')">
+                        {{ __('Create a New Skin') }}
+                    </x-nav-link>
                 </div>
             </div>
 
