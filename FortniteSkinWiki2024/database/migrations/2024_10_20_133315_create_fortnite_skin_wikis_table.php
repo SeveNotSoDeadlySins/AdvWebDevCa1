@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('fortnite_skin_wikis', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('vbuck_price');
+            $table->integer('vbuck_price')->nullable();
             $table->string('rarity');
-            $table->integer('season');
+            $table->integer('season')->nullable();
             $table->string('image')->nullable();
+            $table->timestamps();
         });
     }
 

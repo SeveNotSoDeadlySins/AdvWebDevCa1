@@ -39,14 +39,17 @@ class FortniteSkinWikiController extends Controller
         ]);
         if($request->hasFile('image')) {
             $imageName = time().'.'.$request->image->extension();
-            $request->image->move(public_path('images/FortniteSkinWikis') , $image);
+            $request->image->move(public_path('images/FortniteSkinWikis') , $imageName);
+        
         }
         FortniteSkinWiki::create([
             'Name' => $request->Name,
             'Rarity'=> $request->Rarity,
             'image'=>$imageName,
-            'Price'=>$request->Price,
-            'SeasonRelease'=>$request->SeasonRelease
+            'vbuck_price'=>$request->Price,
+            'season'=>$request->SeasonRelease,
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
         return to_route('FortniteSkinWikis.index')->with('success' , 'Fortnite Skin created!');
     }
@@ -54,15 +57,15 @@ class FortniteSkinWikiController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(FortniteSkinWiki $FortniteSkinWikis)
+    public function show(FortniteSkinWiki $FortniteSkinWiki)
     {
-        return view('FortniteSkinWikis.show')->with('FortniteSkinWiki', $FortniteSkinWikis);
+        return view('FortniteSkinWikis.show') -> with('FortniteSkinWiki' , $FortniteSkinWiki);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(FortniteSkinWiki $FortniteSkinWikis)
+    public function edit(FortniteSkinWiki $FortniteSkinWiki)
     {
         //
     }
@@ -70,7 +73,7 @@ class FortniteSkinWikiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, FortniteSkinWiki $FortniteSkinWikis)
+    public function update(Request $request, FortniteSkinWiki $FortniteSkinWiki)
     {
         //
     }
@@ -78,7 +81,7 @@ class FortniteSkinWikiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(FortniteSkinWiki $FortniteSkinWikis)
+    public function destroy(FortniteSkinWiki $FortniteSkinWiki)
     {
         //
     }

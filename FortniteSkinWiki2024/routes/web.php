@@ -17,7 +17,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/fortnite-skin-wikis', [FortniteSkinWikiController::class, 'index'])->name('FortniteSkinWikis.index');
-    Route::get('/FortniteSkinWifi/{FortniteSkinWifi}', [FortniteSkinWikiController::class, 'show'])->name('FortniteSkinWikis.show');
+    Route::get('/fortnite-skin-wikis/create', [FortniteSkinWikiController::class, 'create'])->name('FortniteSkinWikis.create');
+    Route::get('/fortnite-skin-wikis/{FortniteSkinWiki}' , [FortniteSkinWikiController::class, 'show'])->name('FortniteSkinWikis.show');
+    Route::post('/fortnite-skin-wikis', [FortniteSkinWikiController::class, 'store'])->name('FortniteSkinWikis.store');
 
 });
 
