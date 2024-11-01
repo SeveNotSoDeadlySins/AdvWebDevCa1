@@ -118,7 +118,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Session Cookie Name
+    | Session Cookie name
     |--------------------------------------------------------------------------
     |
     | Here you may change the name of the session cookie that is created by
