@@ -31,11 +31,11 @@ class FortniteSkinWikiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'Name' => 'required',
-            'Rarity' => 'required',
+            'name' => 'required',
+            'rarity' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'Price' => 'required|integer',
-            'SeasonRelease' => 'required|integer',
+            'vbuck_price' => 'required|integer',
+            'season' => 'required|integer',
         ]);
         if($request->hasFile('image')) {
             $imageName = time().'.'.$request->image->extension();
@@ -43,11 +43,11 @@ class FortniteSkinWikiController extends Controller
         
         }
         FortniteSkinWiki::create([
-            'Name' => $request->Name,
-            'Rarity'=> $request->Rarity,
+            'name' => $request->name,
+            'rarity'=> $request->rarity,
             'image'=>$imageName,
-            'vbuck_price'=>$request->Price,
-            'season'=>$request->SeasonRelease,
+            'vbuck_price'=>$request->vbuck_price,
+            'season'=>$request->season,
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -67,22 +67,34 @@ class FortniteSkinWikiController extends Controller
      */
     public function edit(FortniteSkinWiki $FortniteSkinWiki)
     {
-        //
+        return view('FortniteSkinWikis.edit', compact('FortniteSkinWiki'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, FortniteSkinWiki $FortniteSkinWiki)
     {
-        //
-    }
+        $validatedData  = $request->validate([
+            'name' => 'required|string|max:255',
+            'vbuck_price' => 'required|integer',
+            'rarity' => 'required|string|max:50',
+            'season' => 'required|integer',
+            'image' => 'nullable|string',
+        ]);
 
+        $FortniteSkinWiki->update($validatedData);
+
+        return redirect()->route('FortniteSkinWikis.index')->with('success', 'Skin updated successfully');
+    }
+    
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(FortniteSkinWiki $FortniteSkinWiki)
     {
-        //
+        $FortniteSkinWiki->delete();
+    
+        
+        return redirect()->route('FortniteSkinWikis.index')->with('success', 'Skin deleted successfully');
+        // Redirect with a success message
     }
+    
 }

@@ -9,11 +9,6 @@ class FortniteSkinWiki extends Model
 {
     Use HasFactory;
 
-    protected $fillable = [
-        'Name',
-        'Rarity',
-        'image',
-        'Price',
-        'SeasonRelease'
-    ];
+    protected $fillable = ['name', 'vbuck_price', 'rarity', 'season', 'image'];
+
 }
