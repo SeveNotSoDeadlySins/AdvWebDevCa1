@@ -5,17 +5,49 @@ use App\Models\FortniteSkinWiki;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+
 class FortniteSkinWikiController extends Controller
 {
     /**
      * Display a listing of the resource.
-     */
-    public function index()
+     */ 
+    public function index(Request $request)
     {
-        $FortniteSkinWikis = FortniteSkinWiki::all(); //Fecth all fortnite skins
-        return view('FortniteSkinWikis.index', compact('FortniteSkinWikis'));
+        // Filter posts by season
+        $season = $request->input('season');
+        $rarity = $request->input('rarity');
+        $name = $request->input('name');
 
+        // The Query that is used by mysql
+        $query = FortniteSkinWiki::query();
+    
+        if (!empty($season)) {
+            $query->where('season', $season);
+        }
+
+        if (!empty($rarity)) {
+            $query->where('rarity', $rarity);
+        }
+
+        if (!empty($name)) {
+            $query->where('name', 'LIKE', "%{$name}%");
+        }
+
+        if ($request->ajax()) {
+            return view('partials.fortnite_skin_wikis', ['FortniteSkinWikis' => $FortniteSkinWikis]);
+        }
+
+        // Get all Fortnite skins (filtered if necessary)
+        $FortniteSkinWikis = $query->get();
+
+        return view('FortniteSkinWikis.index', [
+            'FortniteSkinWikis' => $FortniteSkinWikis,
+            'season' => $season,
+            'rarity' => $rarity,
+            'name' => $name,
+        ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -40,7 +72,6 @@ class FortniteSkinWikiController extends Controller
         if($request->hasFile('image')) {
             $imageName = time().'.'.$request->image->extension();
             $request->image->move(public_path('images/FortniteSkinWikis') , $imageName);
-        
         }
         FortniteSkinWiki::create([
             'name' => $request->name,
@@ -96,5 +127,5 @@ class FortniteSkinWikiController extends Controller
         return redirect()->route('FortniteSkinWikis.index')->with('success', 'Skin deleted successfully');
         // Redirect with a success message
     }
-    
+
 }

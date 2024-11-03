@@ -29,7 +29,7 @@
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4">
+        <div class="mt-4">ww
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full"
@@ -38,6 +38,23 @@
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+
+        <div class="mt-4">
+            <x-input-label for="admin" :value="__('Admin')" />
+
+            <!-- Hidden input to ensure unchecked checkbox submits a value of 0 -->
+            <input type="hidden" name="admin" value=0 />
+
+            <!-- Checkbox input for 'admin' role -->
+            <input id="admin" class="block mt-1"
+                type="checkbox"
+                name="admin"
+                value= 1
+                {{ old('admin') ? 'checked' : '' }} />
+
+            <x-input-error :messages="$errors->get('admin')" class="mt-2" />
+        </div>
+
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">

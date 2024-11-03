@@ -1,4 +1,4 @@
-@props(['action', 'method', 'FortniteSkinWiki' => null])
+@props(['action', 'method', 'FortniteSkinWiki'])
 
 <form action="{{$action}}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -34,18 +34,25 @@
         @enderror
     </div>
 
+    @isset($FortniteSkinWiki->image)
+        <div class="mb-4">
+            <img src="{{asset('images/FortniteSkinWikis/' . $FortniteSkinWiki->image)}}" alt="{{$FortniteSkinWiki->name}}">
+        </div>
+    @endisset
+
     <div class="mb-4">
         <label for="image" class="block text-sm font-medium text-gray-700">Skin Image</label>
         <input
             type="file"
             name="image"
             id="image"
-            {{ isset($FortniteSkinWiki->image) ? '' : 'required' }} 
+            {{ isset($FortniteSkinWiki) ? '' : 'required' }} 
             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
-        @error('image')
-            <p class="text-sm text-red-600">{{$message}}</p>
-        @enderror
+            @error('image')
+                <p class="text-sm text-red-600">{{$message}}</p>
+            @enderror
     </div>
+    <!-- had to add the '' after the image otherwise there is no backup value -->
 
     <div class="mb-4">
         <label for="vbuck_price" class="block text-sm text-gray-700">Price</label>
@@ -62,24 +69,19 @@
     </div>
 
     <div class="mb-4">
-        <label for="season" class="block text-sm text-gray-700">Season</label>
+        <label for="season" class="block text-sm text-gray-700 ">Season</label>
         <input
             type="number"
             name="season"
             id="season"
             value="{{ old('season', $FortniteSkinWiki->season ?? '') }}" 
             required 
-            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm mb-2" />
         @error('season')
             <p class="text-sm text-red-600">{{$message}}</p>
         @enderror
-    </div>
 
-    @isset($FortniteSkinWiki->image)
-        <div class="mb-4">
-            <img src="{{ asset($FortniteSkinWiki->image) }}" alt="Skin Cover" class="w-24 h-32 object-cover">
-        </div>
-    @endisset
+
 
     <div>
         <x-primary-button>
