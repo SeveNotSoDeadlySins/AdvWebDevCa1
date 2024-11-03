@@ -23,7 +23,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/fortnite-skin-wikis/{FortniteSkinWiki}/edit', [FortniteSkinWikiController::class, 'edit'])->name('FortniteSkinWikis.edit');
     Route::put('/fortnite-skin-wikis/{FortniteSkinWiki}', [FortniteSkinWikiController::class, 'update'])->name('FortniteSkinWikis.update');
     Route::delete('/fortnite-skin-wikis/{FortniteSkinWiki}', [FortniteSkinWikiController::class, 'destroy'])->name('FortniteSkinWikis.destroy');
-    Route::
 });
 
 require __DIR__.'/auth.php';
