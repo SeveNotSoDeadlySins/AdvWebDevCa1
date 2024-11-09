@@ -13,10 +13,10 @@ class FortniteSkinWikiController extends Controller
      */ 
     public function index(Request $request)
     {
-        // Filter posts by season
         $season = $request->input('season');
         $rarity = $request->input('rarity');
         $name = $request->input('name');
+        $user = $request->input('user');
 
         // The Query that is used by mysql
         $query = FortniteSkinWiki::query();
@@ -33,12 +33,8 @@ class FortniteSkinWikiController extends Controller
             $query->where('name', 'LIKE', "%{$name}%");
         }
 
-        if ($request->ajax()) {
-            return view('partials.fortnite_skin_wikis', ['FortniteSkinWikis' => $FortniteSkinWikis]);
-        }
-
-        // Get all Fortnite skins (filtered if necessary)
         $FortniteSkinWikis = $query->get();
+
 
         return view('FortniteSkinWikis.index', [
             'FortniteSkinWikis' => $FortniteSkinWikis,

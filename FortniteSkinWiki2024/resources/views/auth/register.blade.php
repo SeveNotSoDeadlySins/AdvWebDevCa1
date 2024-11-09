@@ -39,13 +39,13 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+        <!-- Admin -->
         <div class="mt-4">
             <x-input-label for="admin" :value="__('Admin')" />
 
-            <!-- Hidden input to ensure unchecked checkbox submits a value of 0 -->
+            <!-- If the checkbox isn't ticked it will return 0 -->
             <input type="hidden" name="admin" value=0 />
 
-            <!-- Checkbox input for 'admin' role -->
             <input id="admin" class="block mt-1"
                 type="checkbox"
                 name="admin"
