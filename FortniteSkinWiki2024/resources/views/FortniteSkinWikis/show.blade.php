@@ -19,6 +19,37 @@
                                 :SeasonRelease="$FortniteSkinWiki->season"
                                 :image="$FortniteSkinWiki->image"
                             />
+
+                            <form action="{{ route('reviews.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="FortniteSkinWiki" value="{{ $FortniteSkinWiki->id }}">
+                            <div>
+                                <label for="rating">Rating:</label>
+                                <select name="rating" id="rating" required>
+                                    <option value="1">1 Star</option>
+                                    <option value="2">2 Stars</option>
+                                    <option value="3">3 Stars</option>
+                                    <option value="4">4 Stars</option>
+                                    <option value="5">5 Stars</option>
+                                </select>
+                            </div>
+                            <div class="mt-4">
+                                <label for="comment">Comment:</label>
+                                <textarea name="comment" id="comment" rows="3" class="form-control" placeholder="Write your review" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-2">Submit Review</button>
+                        </form>
+                    </div>
+
+                    <hr class="my-6">
+
+                    <!-- Reviews Section -->
+                    <h2 class="font-semibold text-lg mb-4">All Reviews</h2>
+                    <ul id="reviewList">
+                        @foreach($reviews as $review)
+                            <li>{{ $review->username }}: {{ $review->comment }} ({{ $review->rating }} Stars)</li>
+                        @endforeach
+                    </ul>
                     </div>
                 </div>
             </div>

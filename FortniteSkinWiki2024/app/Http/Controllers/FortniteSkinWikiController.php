@@ -18,7 +18,7 @@ class FortniteSkinWikiController extends Controller
         $name = $request->input('name');
         $user = $request->input('user');
 
-        // The Query that is used by mysql
+        //Starts to make the query
         $query = FortniteSkinWiki::query();
     
         if (!empty($season)) {
@@ -30,11 +30,10 @@ class FortniteSkinWikiController extends Controller
         }
 
         if (!empty($name)) {
-            $query->where('name', 'LIKE', "%{$name}%");
+            $query->where('name', 'LIKE', "{$name}%");
         }
 
         $FortniteSkinWikis = $query->get();
-
 
         return view('FortniteSkinWikis.index', [
             'FortniteSkinWikis' => $FortniteSkinWikis,
@@ -43,7 +42,6 @@ class FortniteSkinWikiController extends Controller
             'name' => $name,
         ]);
     }
-    
 
     /**
      * Show the form for creating a new resource.
@@ -124,4 +122,9 @@ class FortniteSkinWikiController extends Controller
         // Redirect with a success message
     }
 
+    
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }

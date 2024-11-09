@@ -43,13 +43,10 @@
         <div class="mt-4">
             <x-input-label for="admin" :value="__('Admin')" />
 
-<<<<<<< HEAD
             <!-- If the checkbox isn't ticked it will return 0 -->
             <input type="hidden" name="admin" value=0 />
-=======
-            <input type="hidden" name="admin" value="0" />
->>>>>>> f3fd2052013d5cc941dee109eed476be0e50bdfa
 
+            <!-- If you tick the box it return 1 to the database making you a admin -->
             <input id="admin" class="block mt-1"
                 type="checkbox"
                 name="admin"
