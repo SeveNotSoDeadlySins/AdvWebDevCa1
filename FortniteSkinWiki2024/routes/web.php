@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\FortniteSkinWikiController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,10 @@ Route::middleware('auth')->group(function () {
     Route::put('/fortnite-skin-wikis/{FortniteSkinWiki}', [FortniteSkinWikiController::class, 'update'])->name('FortniteSkinWikis.update');
     Route::delete('/fortnite-skin-wikis/{FortniteSkinWiki}', [FortniteSkinWikiController::class, 'destroy'])->name('FortniteSkinWikis.destroy');
     Route::get('/search-skins', [SearchController::class, 'searchSkins']);
+    Route::post('/fortnite-skin-wikis/{fortniteSkinWiki}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+
 });
 
 require __DIR__.'/auth.php';
+
+
