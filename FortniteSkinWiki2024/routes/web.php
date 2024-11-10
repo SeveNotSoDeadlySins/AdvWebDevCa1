@@ -26,8 +26,14 @@ Route::middleware('auth')->group(function () {
     Route::put('/fortnite-skin-wikis/{FortniteSkinWiki}', [FortniteSkinWikiController::class, 'update'])->name('FortniteSkinWikis.update');
     Route::delete('/fortnite-skin-wikis/{FortniteSkinWiki}', [FortniteSkinWikiController::class, 'destroy'])->name('FortniteSkinWikis.destroy');
     Route::get('/search-skins', [SearchController::class, 'searchSkins']);
+<<<<<<< HEAD
     Route::post('/fortnite-skin-wikis/{fortniteSkinWiki}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
+=======
+
+    Route::post('/reviews/store', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::get('/products/{id}/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+>>>>>>> 97b409655b7b7bb85af9576182902b3a981b968c
 });
 
 require __DIR__.'/auth.php';
