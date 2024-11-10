@@ -13,7 +13,7 @@ class CreateReviewsTable extends Migration
             $table->foreignId('fortnite_skin_wiki_id')->constrained()->onDelete('cascade'); // Link to FortniteSkinWiki
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('comment');
-            $table->integer('rating'); // You can adjust this based on your rating system
+            $table->integer('rating');
             $table->timestamps();
         });
     }

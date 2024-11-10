@@ -14,6 +14,6 @@ class Review extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class); // Link to the user who posted the review
+        return $this->belongsTo(User::class); //user who posted the review
     }
 }
