@@ -11,4 +11,9 @@ class FortniteSkinWiki extends Model
 
     protected $fillable = ['name', 'vbuck_price', 'rarity', 'season', 'image'];
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
 }
