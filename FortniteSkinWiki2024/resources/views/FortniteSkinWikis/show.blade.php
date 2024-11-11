@@ -26,6 +26,7 @@
                                     @auth
                                     <form action="{{ route('reviews.store', $fortniteSkinWiki->id) }}" method="POST">
                                         @csrf
+                                        <!-- Showing the stars on the create review section -->
                                         <div class="flex space-x-1 text-2xl" id="star-rating">
                                             <input type="radio" id="star1" name="rating" value="1" class="hidden" required />
                                             <label for="star1" title="1 star" class="cursor-pointer text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-4xl">★</label>

@@ -13,11 +13,11 @@ class SearchController extends Controller
         if ($query) {
             // Query the database for the 'name' that are like the $query or the data that i typed into the searchbar
             $skins = FortniteSkinWiki::where('name', 'LIKE', '%' . $query . '%')
-                        ->limit(10)
-                        ->get(['name']); //Only check the name colunm
+                ->limit(10) // Max of 10 cahracters in search
+                ->get(['name']); //Only check the name colunm
             return response()->json($skins);
         }
-
+        
         return response()->json([]);
     }
 }

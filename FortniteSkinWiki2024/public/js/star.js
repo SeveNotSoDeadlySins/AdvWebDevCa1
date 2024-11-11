@@ -1,3 +1,4 @@
+// making the stars be gold when you hover over them
 const stars = document.querySelectorAll('input[name="rating"]');
 const labels = document.querySelectorAll('label[for^="star"]');
 stars.forEach((star) => {

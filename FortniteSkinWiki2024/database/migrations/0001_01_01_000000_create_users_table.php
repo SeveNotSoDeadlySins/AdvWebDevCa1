@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('admin')->default(0);
+            // adds the admin column to the table so that users can give themselves the power of admin to use crud.
+            $table->integer('admin')->default(0); 
             $table->rememberToken();
             $table->timestamps();
         });
