@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Creates the FortniteSkinWiki table
         Schema::create('fortnite_skin_wikis', function (Blueprint $table) {
             $table->id();
             $table->string('name');

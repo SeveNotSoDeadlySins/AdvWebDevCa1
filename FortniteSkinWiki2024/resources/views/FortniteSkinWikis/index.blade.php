@@ -26,9 +26,11 @@
                     <div class="flex justify-center">
                         <form method="GET" action="{{ route('FortniteSkinWikis.index') }}" class="inline-form">
                             <div class="search">
+                                <!-- Search bar with suggestions on what you might be looking for.-->
                                 <input type="text" name="name" id="name" value="{{ request('name') }}" placeholder="Search skins..." onkeyup="searchSkins()" autocomplete="on" class="border rounded px-3 py-2 mx-5 text-black-500">
                                 <div id="suggestions" class="absolute top-50 left-50 w-fit max-h-40 overflow-hidden z-50 text-black-500 ml-5 bg-gray-100 border-black"></div>
 
+                                <!-- all values that can be picked for my filters -->
                                 <select name="season" class="rounded mx-5" FortniteSkinWiki="season" onchange="this.form.submit()">
                                     <option value="" class="text-black-500 bg-gray-100 border-black">-- Select a Season --</option>
                                     <option value=1 class="text-black-500 bg-gray-100 border-black" {{ request('season') == 1 ? 'selected' : '' }}>Season 1</option>

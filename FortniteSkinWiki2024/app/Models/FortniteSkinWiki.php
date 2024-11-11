@@ -9,6 +9,7 @@ class FortniteSkinWiki extends Model
 {
     Use HasFactory;
 
+    // setting the protected $fillable property in a model specifies which attributes can be mass-assigned
     protected $fillable = ['name', 'vbuck_price', 'rarity', 'season', 'image'];
 
     public function reviews()

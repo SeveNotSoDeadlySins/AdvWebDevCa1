@@ -17,6 +17,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    // setting the protected $fillable property in a model specifies which attributes can be mass-assigned
     protected $fillable = [
         'name',
         'email',

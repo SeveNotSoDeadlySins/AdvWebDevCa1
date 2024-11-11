@@ -8,9 +8,10 @@ class CreateReviewsTable extends Migration
 {
     public function up()
     {
+        // Creates the reviews table.
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('fortnite_skin_wiki_id')->constrained()->onDelete('cascade'); // Link to FortniteSkinWiki
+            $table->foreignId('fortnite_skin_wiki_id')->constrained()->onDelete('cascade'); // Link to FortniteSkinWiki table
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('comment');
             $table->integer('rating');

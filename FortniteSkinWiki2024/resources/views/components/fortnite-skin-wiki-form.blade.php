@@ -20,19 +20,25 @@
         @enderror
     </div>
 
+    <!-- A dropdown menu so only 4 options can be selected so that the filters do not break. -->
     <div class="mb-4">
         <label for="rarity" class="block text-sm text-gray-700">Rarity</label>
-        <input
-            type="text"
+        <select
             name="rarity"
             id="rarity"
-            value="{{ old('rarity', $FortniteSkinWiki->rarity ?? '') }}" 
             required 
-            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
+            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
+        >
+            <option value="Legendary" {{ old('rarity', $FortniteSkinWiki->rarity ?? '') == 'Legendary' ? 'selected' : '' }}>Legendary</option>
+            <option value="Epic" {{ old('rarity', $FortniteSkinWiki->rarity ?? '') == 'Epic' ? 'selected' : '' }}>Epic</option>
+            <option value="Rare" {{ old('rarity', $FortniteSkinWiki->rarity ?? '') == 'Rare' ? 'selected' : '' }}>Rare</option>
+            <option value="Common" {{ old('rarity', $FortniteSkinWiki->rarity ?? '') == 'Common' ? 'selected' : '' }}>Common</option>
+        </select>
         @error('rarity')
             <p class="text-sm text-red-600">{{$message}}</p>
         @enderror
     </div>
+
 
     @isset($FortniteSkinWiki->image)
         <div class="mb-4">
@@ -42,17 +48,17 @@
 
     <div class="mb-4">
         <label for="image" class="block text-sm font-medium text-gray-700">Skin Image</label>
+        <!-- had to add the '' after the image otherwise there is no backup value and will return an error -->
         <input
             type="file"
             name="image"
-            id="image"
+            id="image"          
             {{ isset($FortniteSkinWiki) ? '' : 'required' }} 
             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" />
             @error('image')
                 <p class="text-sm text-red-600">{{$message}}</p>
             @enderror
     </div>
-    <!-- had to add the '' after the image otherwise there is no backup value -->
 
     <div class="mb-4">
         <label for="vbuck_price" class="block text-sm text-gray-700">Price</label>

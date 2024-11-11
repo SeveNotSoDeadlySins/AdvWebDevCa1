@@ -1,8 +1,11 @@
 @props(['name', 'Price', 'Rarity', 'SeasonRelease', 'image'])
 
+<!-- What is displayed after after clicking on one of the card on the cards details. -->
 <div class="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300 max-w-xl mx-auto">
 
+    
     <div class="overflow-hidden rounded-lg mb-4 flex justify-center"> 
+        <!-- Assest goes to the public folder then go throughts this directory to display the image. -->
         <img src="{{ asset('images/FortniteSkinWikis/' . $image) }}" alt="{{ $name }}" class="w-full max-w-xs h-auto object-cover">
     </div>
 
