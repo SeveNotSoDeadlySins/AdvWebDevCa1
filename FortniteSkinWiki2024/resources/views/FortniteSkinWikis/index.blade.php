@@ -5,16 +5,6 @@
         </h2>
     </x-slot>
 
-    <style>
-        .inline-form {
-            display: inline-block;
-            vertical-align: middle;
-            padding-bottom: 20px;
-            font-weight: bold;
-            font-size: 20px
-        }
-    </style>
-
     <x-alert-success>
         {{session('success')}}
     </x-alert-success>
@@ -24,7 +14,7 @@
             <div class="p-6 text-gray-900 space-x-4 items-center">
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-center">
-                        <form method="GET" action="{{ route('FortniteSkinWikis.index') }}" class="inline-form">
+                        <form method="GET" action="{{ route('FortniteSkinWikis.index') }}" class="inline-block align-middle pb-5 font-bold text-lg">
                             <div class="search">
                                 <!-- Search bar with suggestions on what you might be looking for.-->
                                 <input type="text" name="name" id="name" value="{{ request('name') }}" placeholder="Search skins..." onkeyup="searchSkins()" autocomplete="on" class="border rounded px-3 py-2 mx-5 text-black-500">
