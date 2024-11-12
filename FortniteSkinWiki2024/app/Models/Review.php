@@ -18,4 +18,3 @@ class Review extends Model
     }
 }
 
-<div test>

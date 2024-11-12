@@ -67,5 +67,22 @@
                 {{ __('Register') }}
             </x-primary-button>
         </div>
+
+        <div id="g-signin2"></div>
+
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script>
+        function onSignIn(googleUser) {
+            // This is the object you will use to handle the signed-in user
+            var profile = googleUser.getBasicProfile();
+            var idToken = googleUser.getAuthResponse().id_token;
+
+            // You can now send the ID token to your server for validation and registration
+            console.log("ID Token: " + idToken);
+
+            // Optionally, you can get more information about the user, such as:
+            // profile.getName(), profile.getEmail(), profile.getImageUrl(), etc.
+        }
+        </script>
     </form>
 </x-guest-layout>
