@@ -48,6 +48,9 @@ class FortniteSkinWikiController extends Controller
      */
     public function create()
     {
+        if(auth()->user()->admin !== 1){
+            return redirect()->route('FortniteSkinWikis.index')->with('error', 'Access denied');
+        }
         return view('FortniteSkinWikis.create');
     }
 
@@ -94,6 +97,9 @@ class FortniteSkinWikiController extends Controller
      */
     public function edit(FortniteSkinWiki $FortniteSkinWiki)
     {
+        if(auth()->user()->admin !== 1){
+            return redirect()->route('FortniteSkinWikis.index')->with('error', 'Access denied');
+        }
         return view('FortniteSkinWikis.edit', compact('FortniteSkinWiki'));
     }
 
@@ -117,9 +123,12 @@ class FortniteSkinWikiController extends Controller
      */
     public function destroy(FortniteSkinWiki $FortniteSkinWiki)
     {
-        $FortniteSkinWiki->delete();
-    
+        if(auth()->user()->admin !== 1){
+            return redirect()->route('FortniteSkinWikis.index')->with('error', 'Access denied');
+        }
         
+        $FortniteSkinWiki->delete();
+
         return redirect()->route('FortniteSkinWikis.index')->with('success', 'Skin deleted successfully');
         // Redirect with a success message
     }
