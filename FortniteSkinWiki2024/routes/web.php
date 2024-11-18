@@ -5,6 +5,7 @@ use App\Http\Controllers\FortniteSkinWikiController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GoogleController;
 
 
 Route::get('/', function () {
@@ -32,6 +33,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 
 
