@@ -20,7 +20,7 @@
                         {{ __('View All FortniteSkins') }}
                     </x-nav-link>
                     <!-- Same if statment as the index.blade.php checking if the user is logged in and is a admin before it displays the create button -->
-                    @if(Auth::check() && Auth::user()->admin === 1) 
+                    @if(auth()->user()->admin === '1') 
                         <x-nav-link :href="route('FortniteSkinWikis.create')" :active="request()->routeIs('FortniteSkinWikis.create')">
                             {{ __('Create a New Skin') }}
                         </x-nav-link>
