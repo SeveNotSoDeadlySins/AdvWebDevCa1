@@ -17,4 +17,9 @@ class FortniteSkinWiki extends Model
         return $this->hasMany(Review::class);
     }
 
+    public function cathegories()
+    {
+        return $this->hasMany(Cathegory::class);
+    }
+
 }
