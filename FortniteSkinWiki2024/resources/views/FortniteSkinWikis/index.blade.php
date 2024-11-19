@@ -53,6 +53,16 @@
                                 <a href="{{ route('FortniteSkinWikis.show', $FortniteSkinWiki)}}">
                                     <x-FortniteSkinWiki-card :name="$FortniteSkinWiki->name" :Price="'Price: ' . $FortniteSkinWiki->vbuck_price" :Rarity="'Rarity: '. $FortniteSkinWiki->rarity" :SeasonRelease="'Season: ' . $FortniteSkinWiki->season" :image="$FortniteSkinWiki->image"/>
                                 </a>
+
+                                <div class="mt-2 text-sm text-gray-600">
+                                    <strong>Category:</strong> 
+                                    @if($FortniteSkinWiki->category)
+                                        {{ $FortniteSkinWiki->category->category_name }}
+                                    @else
+                                        {{ 'No Category' }}
+                                    @endif
+                                </div>
+
                                 <!-- Checks if the user is logged in and that the user admin in the database is 1.-->
                                 @if(Auth::check() && Auth::user()->admin === 1) 
                                     <div class ="mt-4 flex space-x-2">

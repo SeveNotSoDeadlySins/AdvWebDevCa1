@@ -86,10 +86,22 @@
         @error('season')
             <p class="text-sm text-red-600">{{$message}}</p>
         @enderror
-
-
-
     <div>
+
+    <div class="mb-4">
+        <label for="Cathegory" class="block text-sm text-gray-700 ">Cathegory</label>
+        <input
+            type="number"
+            name="season"
+            id="season"
+            value="{{ old('season', $FortniteSkinWiki->season ?? '') }}" 
+            required 
+            class="mt-1 block w-full border-gray-300 rounded-md shadow-sm mb-2" />
+        @error('season')
+            <p class="text-sm text-red-600">{{$message}}</p>
+        @enderror
+    <div>
+
         <x-primary-button>
             {{ isset($FortniteSkinWiki) ? 'Update Skin' : 'Add Skin' }}
         </x-primary-button>
