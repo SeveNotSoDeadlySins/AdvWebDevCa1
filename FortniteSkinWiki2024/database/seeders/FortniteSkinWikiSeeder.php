@@ -6,6 +6,9 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\FortniteSkinWiki;
 use Carbon\Carbon;
+use App\Models\Player;
+use App\Models\HasFactory;
+
 
 class FortniteSkinWikiSeeder extends Seeder
 {
@@ -16,7 +19,7 @@ class FortniteSkinWikiSeeder extends Seeder
     {
         // When the database is seeded all of the data within the inseart is put into the database.
         $currentTimestamp = Carbon::now();
-        FortniteSkinWiki::insert([
+        $FortniteSkinWikis = [
             ['name'=>'A.I.M.', 'vbuck_price' => "2000", 'rarity' => 'Legendary' ,'season' => "6" , 'image' => 'AIM.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
             ['name'=>"Arachne", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "6" , "image" => 'Arachne.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
             ['name'=>"Ark", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "7" , "image" => 'Ark.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
@@ -123,6 +126,15 @@ class FortniteSkinWikiSeeder extends Seeder
             ['name'=>"Wukong", 'vbuck_price' => "2000", 'rarity' => "Legendary" ,'season' => "2",'image' => 'Wukong.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
             ['name'=>"Zenith", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "7" , "image" => 'Zenith.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
             ['name'=>"Zero", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "1" , "image" => 'Zero.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp]
-        ]);
+        ];
+
+        foreach ($FortniteSkinWikis as $skinData)
+        {
+            $fortniteSkinWiki = FortniteSkinWiki::create(array_merge($skinData, ['created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp]));
+
+            $players = Player::inRandomOrder()->take(2)->pluck('id');
+
+            $fortniteSkinWiki->players()->attach($players);
+        }
     }
 }

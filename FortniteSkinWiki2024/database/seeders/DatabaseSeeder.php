@@ -14,5 +14,8 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(FortniteSkinWikiSeeder::class);
+        $this->call(PlayerSeeder::class);
+        $this->call(fortnite_skin_wiki_player::class);
+
     }
 }
