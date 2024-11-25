@@ -32,9 +32,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/fortnite-skin-wikis/{FortniteSkinWiki}', [FortniteSkinWikiController::class, 'update'])->name('FortniteSkinWikis.update');
 });
 
-
-Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
-Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+// For later
+// Route::get('auth/google', [GoogleController::class, 'redirectToGoogle']);
+// Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 
 
