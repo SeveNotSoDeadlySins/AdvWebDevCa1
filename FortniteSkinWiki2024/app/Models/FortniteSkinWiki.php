@@ -26,5 +26,4 @@ class FortniteSkinWiki extends Model
     {
         return $this->belongsToMany(Player::class);
     }
-
 }
