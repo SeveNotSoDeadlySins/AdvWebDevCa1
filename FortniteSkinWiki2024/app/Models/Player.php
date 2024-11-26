@@ -12,7 +12,7 @@ class Player extends Model
     protected $fillable = ['username', 'email', 'level']; 
 
 
-    public function fortniteskinwikis()
+    public function fortniteSkinWikis()
     {
         return $this->belongsToMany(FortniteSkinWiki::class);
     }

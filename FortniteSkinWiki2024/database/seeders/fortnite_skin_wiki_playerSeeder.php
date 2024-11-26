@@ -4,10 +4,10 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\FortniteSkinWiki;
+use App\Models\FortniteSkinWikiPlayer;
 
 
-class fortnite_skin_wiki_playerSeeder extends Seeder
+class FortniteSkinWikiPlayerSeeder extends Seeder
 {
     /**
      * Run the database seeds.

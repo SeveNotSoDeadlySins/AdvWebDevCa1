@@ -130,11 +130,14 @@ class FortniteSkinWikiSeeder extends Seeder
 
         foreach ($FortniteSkinWikis as $skinData)
         {
-            $fortniteSkinWiki = FortniteSkinWiki::create(array_merge($skinData, ['created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp]));
-
-            $players = Player::inRandomOrder()->take(2)->pluck('id');
-
+            $fortniteSkinWiki = FortniteSkinWiki::create(array_merge($skinData, [
+                'created_at' => $currentTimestamp,
+                'updated_at' => $currentTimestamp
+            ]));
+        
+            $players = Player::inRandomOrder()->take(2)->pluck('id')->toArray();
+        
             $fortniteSkinWiki->players()->attach($players);
-        }
+        }       
     }
 }
