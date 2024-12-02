@@ -25,5 +25,11 @@ class ReviewController extends Controller
     
         return redirect()->back()->with('success', 'Review added successfully!');
     }
+
+    public function edit(Review $review) {
+        if(auth->user->id !== $review->user_id && auth()->user()->admin !== 1){
+            return redirect()->route(''); 
+        }
+    }
 }
 
