@@ -12,7 +12,6 @@ class PlayerController extends Controller
      */
     public function index(Request $request)
     {
-        // Fetch all players
         $players = Player::with('fortniteskinwikis')->get();
         return view('Players.index', compact('players'));
     }
@@ -42,7 +41,7 @@ class PlayerController extends Controller
         if(auth()->user()->admin !== 1)  {
             return redirect()->route('FortniteSkinWiki.index')->with('error', 'Access Denied');
         }
-
+        // Checks if all the incoming data fits these criteras
         $validated = $request->validate([
             'username' => 'required',
             'email' => 'required',
@@ -51,7 +50,7 @@ class PlayerController extends Controller
             'fortniteskinwikis' => 'array',
         ]);
 
-
+        // Check if a profile picture file was uploaded.
         if ($request->hasFile('pfp')) {
             $imageName = time().'.'.$request->pfp->extension();
             $request->pfp->move(public_path('images/Players'), $imageName);
@@ -73,13 +72,15 @@ class PlayerController extends Controller
      */
     public function show(Player $player)
     {
-    try {
-        $player->load('fortniteskinwikis');
-    } 
-    catch (\Exception $e) {
-        return response()->json(['error' => $e->getMessage()]);
-    }        
-    return(view('Players.show',compact('player')));
+        // Try to load the related 'fortniteskinwikis' model data for the player. I was getting a error when trying this the first time nd try helped me debug my issue.
+        try {
+            $player->load('fortniteskinwikis');
+        } 
+        // Catch any exceptions that might occur during the loading process.
+        catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()]);
+        }        
+        return(view('Players.show',compact('player')));
     }
 
     /**
@@ -100,6 +101,7 @@ class PlayerController extends Controller
      */
     public function update(Request $request, Player $player)
     {
+        // Checks if all the incoming data fits these criteras
         $validatedData  = $request->validate([
             'username' => 'required|string|max:255',
             'email' => 'required|integer',
@@ -109,6 +111,7 @@ class PlayerController extends Controller
 
         $FortniteSkinWiki->update($validatedData);
 
+        // If the requst id valid update fortniteskinwikis
         if($request->has('fortniteskinwikis')) {
             $player->fortniteskinwikis()->sync($request->fortniteskinwikis);
         }
@@ -122,7 +125,9 @@ class PlayerController extends Controller
      */
     public function destroy(Player $player)
     {
+        // Detach all related FortniteSkinWikis from the player.
         $player->fortniteskinwikis()->detach();
+        // Deletes player from the database.
         $player->delete();
 
         return redirect()->route('Players.index')->with('success', 'Player deleted successfully');

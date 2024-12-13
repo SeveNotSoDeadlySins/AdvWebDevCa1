@@ -72,20 +72,20 @@
                                             @endif
                                         </p>
 
-                                        @if(review->user->is(auth()->user()) || auth()->user()->admin === 1) 
+                                        @if($review->user->is(auth()->user()) || auth()->user()->admin === 1) 
                                             <a href="{{ route('reviews.edit', $review) }}" class="bg-yellow-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
                                                 {{__('Edit Review') }}
                                             </a>
-                                        
 
-                                            <form method="POST" action="{{ route('review.destroy', $review) }}">
+                                             <form method="POST" action="{{ route('reviews.destroy', $review) }}">
                                                 @csrf
                                                 @method('delete')
                                                 <x-danger-button :href="route('reviews.destroy', $review)"
-                                                    onclick="event.preventDefault(); this.closest('form').submit();">
+                                                        onclick="event.preventDefault(); this.closest('form').submit();">
                                                     {{__('Delete Review') }}
                                                 </x-danger-button>
                                             </form>
+
                                         @endif
                                         <p class="text-base">{{ $review->comment }}</p>
                                     </div>

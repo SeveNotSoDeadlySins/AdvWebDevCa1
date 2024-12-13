@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
 {
+    use HasFactory;
+
+    protected $fillable = ['fortnite_skin_wiki_id', 'user_id', 'comment', 'rating']; 
+
     public function FortniteSkinWiki()
     {
         return $this->belongsTo(FortniteSkinWiki::class);

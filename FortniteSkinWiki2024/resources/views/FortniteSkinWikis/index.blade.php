@@ -8,6 +8,9 @@
     <x-alert-success>
         {{session('success')}}
     </x-alert-success>
+    <x-alert-error>
+        {{session('error')}}
+    </x-alert-error>
 
     <div class='py-12'>
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -55,30 +58,30 @@
                                 </a>
 
                                 <div class="mt-2 text-sm text-gray-600">
-                                    <strong>Category:</strong> 
-                                    @if($FortniteSkinWiki->category)
-                                        {{ $FortniteSkinWiki->category->category_name }}
-                                    @else
-                                        {{ 'No Category' }}
-                                    @endif
+                                    <strong>Category:</strong>
+                                    {{ $FortniteSkinWiki->cathegory->cathegory_name ?? 'No Category' }}
                                 </div>
 
-                                <!-- Checks if the user is logged in and that the user admin in the database is 1.-->
-                                @if(Auth::check() && Auth::user()->admin === 1) 
-                                    <div class ="mt-4 flex space-x-2">
-                                        <a href="{{ route('FortniteSkinWikis.edit', $FortniteSkinWiki) }}" class="text-gray-600 bg-orange-300 hover:bg-orange-700 font-bold py-2 px-4 rounded">
-                                            Edit
-                                        </a>
 
-                                        <form action="{{route('FortniteSkinWikis.destroy' , $FortniteSkinWiki) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this fortnite skin?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="text-gray-600 bg-red-300 hover:bg-red font-bold py-2 px-4 rounded">
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </div>
-                                @endif
+
+                                <!-- Checks if the user is logged in and that the user admin in the database is 1.-->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                                    @if(Auth::check() && Auth::user()->admin === 1) 
+                                        <div class ="mt-4 flex space-x-2">
+                                            <a href="{{ route('FortniteSkinWikis.edit', $FortniteSkinWiki) }}" class="text-gray-600 bg-orange-300 hover:bg-orange-700 font-bold py-2 px-4 rounded">
+                                                Edit
+                                            </a>
+
+                                            <form action="{{route('FortniteSkinWikis.destroy' , $FortniteSkinWiki) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this fortnite skin?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-gray-600 bg-red-300 hover:bg-red font-bold py-2 px-4 rounded">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
                         @endforeach
                     </div>

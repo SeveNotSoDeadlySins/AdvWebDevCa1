@@ -13,7 +13,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // Seeding all the datbases
         $this->call(PlayerSeeder::class);
         $this->call(FortniteSkinWikiSeeder::class);
+        $this->call(CathegorySeeder::class);
     }
 }

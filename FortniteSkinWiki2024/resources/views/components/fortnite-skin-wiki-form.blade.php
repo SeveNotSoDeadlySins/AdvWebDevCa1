@@ -28,7 +28,7 @@
             id="rarity"
             required 
             class="mt-1 block w-full border-gray-300 rounded-md shadow-sm"
-        >
+            >
             <option value="Legendary" {{ old('rarity', $FortniteSkinWiki->rarity ?? '') == 'Legendary' ? 'selected' : '' }}>Legendary</option>
             <option value="Epic" {{ old('rarity', $FortniteSkinWiki->rarity ?? '') == 'Epic' ? 'selected' : '' }}>Epic</option>
             <option value="Rare" {{ old('rarity', $FortniteSkinWiki->rarity ?? '') == 'Rare' ? 'selected' : '' }}>Rare</option>

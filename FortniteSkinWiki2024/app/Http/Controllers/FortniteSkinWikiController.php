@@ -18,6 +18,7 @@ class FortniteSkinWikiController extends Controller
         $name = $request->input('name');
         $user = $request->input('user');
 
+
         //Starts to make the query
         $query = FortniteSkinWiki::query();
     

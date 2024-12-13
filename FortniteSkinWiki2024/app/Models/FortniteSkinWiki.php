@@ -19,7 +19,7 @@ class FortniteSkinWiki extends Model
 
     public function cathegories()
     {
-        return $this->hasMany(Cathegory::class);
+        return $this->hasOne(Cathegory::class);
     }
 
     public function players()

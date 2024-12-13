@@ -16,6 +16,7 @@ class GoogleAuthController extends Controller
      */
     public function redirect()
     {
+        // Redirect the user to Google for authentication
         return Socialite::driver('google')->redirect();
     }
 
@@ -25,16 +26,21 @@ class GoogleAuthController extends Controller
     public function callback()
     {
         try {
+            // Try to get a authenticated google user
             $user = Socialite::driver('google')->user();
         } catch (Throwable $e) {
+            // If theres a error during the google authenication process. Throw in a error 
             return redirect('/')->with('error', 'Google authentication failed.');
         }
 
+        // Checks if a user with the same email already exists in the database
         $existingUser = User::where('email', $user->email)->first();
 
         if ($existingUser) {
+            // If the users email already exists log them in
             Auth::login($existingUser);
         } else {
+            // If the user does not exist, create a new user
             $newUser = User::updateOrCreate([
                 'email' => $user->email
             ], [
@@ -44,7 +50,7 @@ class GoogleAuthController extends Controller
             ]);
             Auth::login($newUser);
         }
-
+        // Will take you to the dashboard page
         return redirect('/dashboard');
     }
 }

@@ -52,14 +52,16 @@
                 {{ __('Already registered?') }}
             </a>
 
-            <x-primary-button class="ms-4">
+            <x-primary-button class="ms-3">
                 {{ __('Register') }}
             </x-primary-button>
+
+            <!-- Log in with google button -->
+            <a href="{{ route('auth.google.redirect') }}" class=" ms-3 btn bg-blue-100 p-3 shadow-sm border rounded-md text-blue-900">
+                Login with Google 
+            </a>
         </div>
 
-        <a href="{{ route('auth.google.redirect') }}" class="btn bg-blue-100 p-3 shadow-sm border rounded-md text-blue-900">
-            Login with Google 
-        </a>
     </form>
 
 </x-guest-layout>
