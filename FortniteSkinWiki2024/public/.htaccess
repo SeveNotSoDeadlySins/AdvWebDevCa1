@@ -5,6 +5,7 @@
 
     RewriteEngine On
 
+<<<<<<< HEAD
     Header set Cross-Origin-Embedder-Policy "require-corp"
     
     Header set Cross-Origin-Opener-Policy "same-origin"
@@ -12,15 +13,29 @@
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
+=======
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder...
+>>>>>>> 90865f04d4d712e0c3445eaad23c45bc1c331c0d
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_URI} (.+)/$
     RewriteRule ^ %1 [L,R=301]
 
+<<<<<<< HEAD
+=======
+    # Send Requests To Front Controller...
+>>>>>>> 90865f04d4d712e0c3445eaad23c45bc1c331c0d
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+<<<<<<< HEAD
 
 <IfModule mod_headers.c>
     Header set Content-Security-Policy "default-src 'self'; script-src 'self' https://apis.google.com https://www.gstatic.com; object-src 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self' https://apis.google.com; img-src 'self' https://example.com;"
 </IfModule>
+=======
+>>>>>>> 90865f04d4d712e0c3445eaad23c45bc1c331c0d
