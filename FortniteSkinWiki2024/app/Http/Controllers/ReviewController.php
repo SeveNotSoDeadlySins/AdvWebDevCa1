@@ -43,9 +43,6 @@ class ReviewController extends Controller
 
     public function destroy(Review $review)
     {
-        if(auth()->user()->admin !== 1){
-            return redirect()->route('FortniteSkinWikis.index')->with('error', 'Access denied');
-        }
         $review->delete();
 
         return redirect()->route('FortniteSkinWikis.index')->with('success', 'Review deleted successfully');
