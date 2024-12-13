@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('username');
             $table->string('email');
             $table->string('level');
+            $table->string('pfp');
+            $table->timestamps();
         });
     }
 

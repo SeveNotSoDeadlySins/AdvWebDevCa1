@@ -45,7 +45,7 @@
                                         </div>
                                     </div>
 
-                                    <textarea class="w-full h-48 p-4 border border-gray-300 rounded-md text-xl" name="comment" required placeholder="Comment... "></textarea>
+                                    <textarea class="w-full h-48 p-4 border border-gray-300 rounded-md text-xl" name="comment" required placeholder="Write a review....."></textarea>
 
                                     <button type="submit" class="mt-2 bg-blue-500 text-white px-4 py-2 rounded mb-4">Submit Review</button>
                                 </form>

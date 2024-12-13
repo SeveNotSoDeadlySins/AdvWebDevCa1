@@ -19,7 +19,7 @@ class FortniteSkinWikiSeeder extends Seeder
     {
         // When the database is seeded all of the data within the inseart is put into the database.
         $currentTimestamp = Carbon::now();
-        $fortniteSkinWikis = [
+        $fortniteskinwikis = [
             ['name'=>'A.I.M.', 'vbuck_price' => "2000", 'rarity' => 'Legendary' ,'season' => "6" , 'image' => 'AIM.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
             ['name'=>"Arachne", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "6" , "image" => 'Arachne.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
             ['name'=>"Ark", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "7" , "image" => 'Ark.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
@@ -111,9 +111,9 @@ class FortniteSkinWikiSeeder extends Seeder
             ['name'=>"TheMightyVolt", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "4" , "image" => 'TheMightyVolt.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
             ['name'=>"ThePrisoner", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "7" , "image" => 'ThePrisoner.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
             ['name'=>"TheReaper", 'vbuck_price' => "2000", 'rarity' => "Legendary" ,'season' => "3" , "image" => 'TheReaper.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
-            ['name'=>"TheScientist", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "10" , "image" => '', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
-            ['name'=>"TheVisitor", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "4" , "image" => 'TheVisitor.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
-            ['name'=>"TriceraOps", 'vbuck_price' => "2000", 'rarity' => "Legendary" ,'season' => "3" , "image" => 'TriceraOps', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
+            ['name'=>"TheScientist", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "10" , "image" => 'TheScientist.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
+            ['name'=>"TheVisitor", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "4" , "image" => 'TheVistor.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
+            ['name'=>"TriceraOps", 'vbuck_price' => "2000", 'rarity' => "Legendary" ,'season' => "3" , "image" => 'TriceraOps.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
             ['name'=>"Valkyrie", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "5"  , "image" => 'Valkyrie.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
             ['name'=>"Valor", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "4" , "image" => 'Valor.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
             ['name'=>"Velocity", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "9" , "image" => 'Velocity.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
@@ -125,14 +125,13 @@ class FortniteSkinWikiSeeder extends Seeder
             ['name'=>"WildCard", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "5" , "image" => 'WildCard.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
             ['name'=>"Wukong", 'vbuck_price' => "2000", 'rarity' => "Legendary" ,'season' => "2",'image' => 'Wukong.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
             ['name'=>"Zenith", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "7" , "image" => 'Zenith.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp],
-            // ['name'=>"Zero", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "1" , "image" => 'Zero.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp]
-            //My number of players doesn't go into my number of Skins. With this skin not commented out
+            ['name'=>"Zero", 'vbuck_price' => "2000", 'rarity' => "Legendary",'season' => "1" , "image" => 'Zero.jpg', 'created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp]
         ];
 
-        foreach ($fortniteSkinWikis as $skinData) {
+        foreach ($fortniteskinwikis as $skinData) {
             $skin = FortniteSkinWiki::create(array_merge($skinData, ['created_at' => $currentTimestamp , 'updated_at' => $currentTimestamp]));
     
-            $players = Player::inRandomOrder()->take(21)->pluck('id'); 
+            $players = Player::inRandomOrder()->take(2)->pluck('id'); 
             $skin->players()->attach($players);
         }
     }

@@ -130,8 +130,6 @@ class FortniteSkinWikiController extends Controller
         $FortniteSkinWiki->delete();
     
         
-        $FortniteSkinWiki->delete();
-
         return redirect()->route('FortniteSkinWikis.index')->with('success', 'Skin deleted successfully');
         // Redirect with a success message
     }

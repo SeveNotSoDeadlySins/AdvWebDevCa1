@@ -9,10 +9,10 @@ class Player extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['username', 'email', 'level']; 
+    protected $fillable = ['username', 'email', 'level', 'pfp']; 
 
 
-    public function fortniteSkinWikis()
+    public function fortniteskinwikis()
     {
         return $this->belongsToMany(FortniteSkinWiki::class);
     }

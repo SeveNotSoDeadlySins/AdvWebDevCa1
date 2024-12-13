@@ -2,7 +2,7 @@
 namespace App\Services;
 
 use Google_Client;
-use Google_Service_Sheets; // or any other service you need
+use Google_Service_Sheets; 
 
 class GoogleApiService
 {
@@ -17,14 +17,12 @@ class GoogleApiService
         $this->client->setPrompt('select_account consent');
     }
 
-    // Example method to fetch Google Sheets data
     public function getSheetsService()
     {
         $service = new Google_Service_Sheets($this->client);
         return $service;
     }
 
-    // Example method to authenticate user
     public function authenticate($code)
     {
         $accessToken = $this->client->fetchAccessTokenWithAuthCode($code);
